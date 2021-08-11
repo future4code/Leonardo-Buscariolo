@@ -29,9 +29,19 @@
 // retornaNumerosParesElevadosADois(arrayAleatorio)
 
 // EXERCÍCIO 03
-function retornaNumerosPares(array) {
+// let primeiroArray = [1,2,3,4,5,6,7,8]
 
-}
+// function retornaNumerosPares(array) {
+//   let segundoArray = []
+//   for(let novoIndex of array) {
+//     if(novoIndex % 2 === 0){
+//       segundoArray.push(novoIndex);
+//     }
+//   }
+//   return(segundoArray)
+// }
+
+// retornaNumerosPares(primeiroArray)
 
 // EXERCÍCIO 04
 function retornaMaiorNumero(array) {
