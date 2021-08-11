@@ -44,9 +44,19 @@
 // retornaNumerosPares(primeiroArray)
 
 // EXERCÍCIO 04
-function retornaMaiorNumero(array) {
+let arrayMaior = [1,2,3,4,5,6,7]
 
+function retornaMaiorNumero(array) {
+  let maiorNumero = 0;
+  for (let numero of array) {
+    if(numero > maiorNumero) {
+      maiorNumero = numero;
+    }
+  }
+  return maiorNumero
 }
+
+retornaMaiorNumero(arrayMaior)
 
 // EXERCÍCIO 05
 function retornaQuantidadeElementos(array) {
