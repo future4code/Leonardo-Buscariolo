@@ -59,18 +59,68 @@
 // retornaMaiorNumero(arrayMaior)
 
 // EXERCÍCIO 05
-let arrayParametro = ["Azul","Amarelo","Vermelho"]
+// let arrayParametro = ["Azul","Amarelo","Vermelho"]
 
-function retornaQuantidadeElementos(array) {
-  return array.length
-}
+// function retornaQuantidadeElementos(array) {
+//   return array.length
+// }
 
-retornaQuantidadeElementos(arrayParametro);
+// retornaQuantidadeElementos(arrayParametro);
 
 // EXERCÍCIO 06
+const booleano1 = true
+const booleano2 = false
+const booleano3 = !booleano2 
+const booleano4 = !booleano3 
+
 function retornaExpressoesBooleanas() {
+  
+  let booleanoAFunction = () => {
+    if (booleano1 && booleano2 && !booleano4) {
+      return true
+    } else {
+      return false
+    }
+  };
+  
+  let booleanoBFunction = () => {
+    if ((booleano1 && booleano2) || !booleano3) {
+      return true
+    } else {
+      return false
+    } 
+  };
+
+  let booleanoCFunction = () => {
+    if ((booleano2 || booleano3) && (booleano4 || booleano1)) {
+      return true
+    } else {
+      return false
+    } 
+  };
+
+  let booleanoDFunction = () => {
+    if (!(booleano2 && booleano3) || !(booleano1 && booleano3)) {
+      return true
+    } else {
+      return false
+    }
+  };
+
+  let booleanoEFunction = () => {
+    if (!(booleano1) && !(booleano3) || (!booleano4 && booleano3 && booleano3)) {
+      return true
+    } else {
+      return false
+    }
+  };
+
+
+  return arrayBooleano = [booleanoAFunction(), booleanoBFunction(), booleanoCFunction(), booleanoDFunction(), booleanoEFunction()];
 
 }
+
+retornaExpressoesBooleanas();
 
 // EXERCÍCIO 07
 function retornaNNumerosPares(n) {
