@@ -44,24 +44,28 @@
 // retornaNumerosPares(primeiroArray)
 
 // EXERCÍCIO 04
-let arrayMaior = [1,2,3,4,5,6,7]
+// let arrayMaior = [1,2,3,4,5,6,7]
 
-function retornaMaiorNumero(array) {
-  let maiorNumero = 0;
-  for (let numero of array) {
-    if(numero > maiorNumero) {
-      maiorNumero = numero;
-    }
-  }
-  return maiorNumero
-}
+// function retornaMaiorNumero(array) {
+//   let maiorNumero = 0;
+//   for (let numero of array) {
+//     if(numero > maiorNumero) {
+//       maiorNumero = numero;
+//     }
+//   }
+//   return maiorNumero
+// }
 
-retornaMaiorNumero(arrayMaior)
+// retornaMaiorNumero(arrayMaior)
 
 // EXERCÍCIO 05
+let arrayParametro = ["Azul","Amarelo","Vermelho"]
+
 function retornaQuantidadeElementos(array) {
-  
+  return array.length
 }
+
+retornaQuantidadeElementos(arrayParametro);
 
 // EXERCÍCIO 06
 function retornaExpressoesBooleanas() {
