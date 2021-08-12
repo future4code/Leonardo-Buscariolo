@@ -209,39 +209,53 @@
 
 // EXERCÍCIO 10
 
-let array = [22,33];
+// let array = [22,33];
 
-function segundoMaiorEMenor(array) {
-  let menorNumero = Math.min(...array);
-  let maiorNumero = Math.max(...array);
-  let indexMaiorNumero = array.indexOf(maiorNumero)
-  let indexMenorNumero = array.indexOf(menorNumero)
-  let segundoArray = []
+// function segundoMaiorEMenor(array) {
+//   let menorNumero = Math.min(...array);
+//   let maiorNumero = Math.max(...array);
+//   let indexMaiorNumero = array.indexOf(maiorNumero)
+//   let indexMenorNumero = array.indexOf(menorNumero)
+//   let segundoArray = []
 
-  if (array.length <= 2) {
-    return [menorNumero, maiorNumero]
-  } else {
-  //Maior e Menor Numero
-  array.splice(indexMaiorNumero, 1)
-  array.splice(indexMenorNumero, 1)
+//   if (array.length <= 2) {
+//     return [menorNumero, maiorNumero]
+//   } else {
+//   //Maior e Menor Numero
+//   array.splice(indexMaiorNumero, 1)
+//   array.splice(indexMenorNumero, 1)
 
-  segundoArray = [...array]
+//   segundoArray = [...array]
 
-  //Segundo Maior e Menor Numero
-  let segundoMenorNumero = Math.min(...segundoArray);
-  let segundoMaiorNumero = Math.max(...segundoArray);
+//   //Segundo Maior e Menor Numero
+//   let segundoMenorNumero = Math.min(...segundoArray);
+//   let segundoMaiorNumero = Math.max(...segundoArray);
 
-  return [segundoMaiorNumero, segundoMenorNumero]
-  }
+//   return [segundoMaiorNumero, segundoMenorNumero]
+//   }
   
-};
+// };
 
-segundoMaiorEMenor(array);
+// segundoMaiorEMenor(array);
 
 // EXERCÍCIO 11
-function ordenaArray(array) {
+let ordemCrescente = [36,12,56,7,3]
 
+function ordenaArray(array) {
+  var length = array.length;  
+    for (var i = 0; i < length; i++) { 
+          for (var j = 0; j < (length - i - 1); j++) { 
+                   if(array[j] > array[j+1]) {
+                           var tmp = array[j]; 
+                array[j] = array[j+1]; 
+                array[j+1] = tmp; 
+            }
+        }     
+    }
+    return array; 
 }
+ordenaArray(ordemCrescente);
+
 
 // EXERCÍCIO 12
 function filmeFavorito() {
