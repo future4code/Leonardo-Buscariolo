@@ -208,9 +208,35 @@
 // comparaDoisNumeros(num1, num2);
 
 // EXERCÍCIO 10
-function segundoMaiorEMenor(array) {
 
-}
+let array = [22,33];
+
+function segundoMaiorEMenor(array) {
+  let menorNumero = Math.min(...array);
+  let maiorNumero = Math.max(...array);
+  let indexMaiorNumero = array.indexOf(maiorNumero)
+  let indexMenorNumero = array.indexOf(menorNumero)
+  let segundoArray = []
+
+  if (array.length <= 2) {
+    return [menorNumero, maiorNumero]
+  } else {
+  //Maior e Menor Numero
+  array.splice(indexMaiorNumero, 1)
+  array.splice(indexMenorNumero, 1)
+
+  segundoArray = [...array]
+
+  //Segundo Maior e Menor Numero
+  let segundoMenorNumero = Math.min(...segundoArray);
+  let segundoMaiorNumero = Math.max(...segundoArray);
+
+  return [segundoMaiorNumero, segundoMenorNumero]
+  }
+  
+};
+
+segundoMaiorEMenor(array);
 
 // EXERCÍCIO 11
 function ordenaArray(array) {
