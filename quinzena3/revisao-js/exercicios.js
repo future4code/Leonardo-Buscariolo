@@ -68,81 +68,144 @@
 // retornaQuantidadeElementos(arrayParametro);
 
 // EXERCÍCIO 06
-const booleano1 = true
-const booleano2 = false
-const booleano3 = !booleano2 
-const booleano4 = !booleano3 
+// const booleano1 = true
+// const booleano2 = false
+// const booleano3 = !booleano2 
+// const booleano4 = !booleano3 
 
-function retornaExpressoesBooleanas() {
+// function retornaExpressoesBooleanas() {
   
-  let booleanoAFunction = () => {
-    if (booleano1 && booleano2 && !booleano4) {
-      return true
-    } else {
-      return false
-    }
-  };
+//   let booleanoAFunction = () => {
+//     if (booleano1 && booleano2 && !booleano4) {
+//       return true
+//     } else {
+//       return false
+//     }
+//   };
   
-  let booleanoBFunction = () => {
-    if ((booleano1 && booleano2) || !booleano3) {
-      return true
-    } else {
-      return false
-    } 
-  };
+//   let booleanoBFunction = () => {
+//     if ((booleano1 && booleano2) || !booleano3) {
+//       return true
+//     } else {
+//       return false
+//     } 
+//   };
 
-  let booleanoCFunction = () => {
-    if ((booleano2 || booleano3) && (booleano4 || booleano1)) {
-      return true
-    } else {
-      return false
-    } 
-  };
+//   let booleanoCFunction = () => {
+//     if ((booleano2 || booleano3) && (booleano4 || booleano1)) {
+//       return true
+//     } else {
+//       return false
+//     } 
+//   };
 
-  let booleanoDFunction = () => {
-    if (!(booleano2 && booleano3) || !(booleano1 && booleano3)) {
-      return true
-    } else {
-      return false
-    }
-  };
+//   let booleanoDFunction = () => {
+//     if (!(booleano2 && booleano3) || !(booleano1 && booleano3)) {
+//       return true
+//     } else {
+//       return false
+//     }
+//   };
 
-  let booleanoEFunction = () => {
-    if (!(booleano1) && !(booleano3) || (!booleano4 && booleano3 && booleano3)) {
-      return true
-    } else {
-      return false
-    }
-  };
+//   let booleanoEFunction = () => {
+//     if (!(booleano1) && !(booleano3) || (!booleano4 && booleano3 && booleano3)) {
+//       return true
+//     } else {
+//       return false
+//     }
+//   };
 
 
-  return arrayBooleano = [booleanoAFunction(), booleanoBFunction(), booleanoCFunction(), booleanoDFunction(), booleanoEFunction()];
+//   return arrayBooleano = [booleanoAFunction(), booleanoBFunction(), booleanoCFunction(), booleanoDFunction(), booleanoEFunction()];
 
-}
+// // }
 
-retornaExpressoesBooleanas();
+// retornaExpressoesBooleanas();
 
 // EXERCÍCIO 07
-function retornaNNumerosPares(n) {
 
-}
+// let numeroParametro = [3]
+
+// function retornaNNumerosPares(n) {
+//   let segundoArray = [];
+
+//   for (let i = 0; i < n; i++ ) {
+//     segundoArray.push(i*2)
+//   }
+//   return segundoArray
+// }
+
+// retornaNNumerosPares(numeroParametro);
 
 // EXERCÍCIO 08
-function checaTriangulo(a, b, c) {
-  // return 'Escaleno'
-  // return 'Equilátero'
-  // return 'Isósceles'
-}
+
+// let lado1 = 3
+// let lado2 = 4
+// let lado3 = 5
+
+// function checaTriangulo(a, b, c) {
+//   if((a === b) && (b === c)) {
+//     return 'Equilátero'
+//   } else if((a === b) || (b === c) || (a === c)) {
+//     return 'Isósceles'
+//   } else if((a !== b) && (b !== c) && (a !== c)) {
+//     return 'Escaleno'
+//   }
+// }
+
+// checaTriangulo(lado1, lado2, lado3)
 
 // EXERCÍCIO 09
-function comparaDoisNumeros(num1, num2) {
-  // Formato do objeto a ser retornado:
-  // {
-  //   maiorNumero: X,
-  //   maiorDivisivelPorMenor: Y,
-  //   diferenca: Z
-  // }
-}
+
+// let num1 = 15;
+// let num2 = 30;
+
+// function comparaDoisNumeros(num1, num2) {
+
+//   let objeto = {
+//     maiorNumero: null,
+//     maiorDivisivelPorMenor: null,
+//     diferenca: null,
+//   }
+
+//   let menorNumero = null;
+
+//   //maiorNumero
+//   if(num1 > num2) {
+//      objeto.maiorNumero = num1;
+//   } else if (num1 < num2){
+//      objeto.maiorNumero = num2;
+//   } else if (num1 === num2) {
+//     objeto.maiorNumero = num1;
+//   }
+
+//   //menorNumero
+//   if(num1 < num2) {
+//     menorNumero = num1;
+//   } else if (num1 > num2){
+//     menorNumero = num2;
+//   } else if (num1 === num2) {
+//     menorNumero = num1;
+//   }
+ 
+//   //divisão
+//   if(objeto.maiorNumero % menorNumero === 0) {
+//     objeto.maiorDivisivelPorMenor = true;
+//   } else {
+//     objeto.maiorDivisivelPorMenor = false;
+//  }
+//   //diferenca
+//   if((objeto.maiorNumero !== menorNumero) || (objeto.maiorNumero === menorNumero)) {
+//     objeto.diferenca = objeto.maiorNumero - menorNumero
+//   } else {
+//     objeto.maiorNumero = 0;
+//   }
+
+//   return objeto
+
+// }
+
+// comparaDoisNumeros(num1, num2);
 
 // EXERCÍCIO 10
 function segundoMaiorEMenor(array) {
