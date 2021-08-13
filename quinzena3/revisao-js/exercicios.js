@@ -282,25 +282,36 @@
 // }
 
 // EXERCÍCIO 14
-function criaRetangulo(lado1, lado2) {
+// function criaRetangulo(lado1, lado2) {
 
-  let informacoesTriangulo = {
-    largura: lado1,
-    altura: lado2,
-    perimetro: 2*(lado1 + lado2),
-    area: lado1 * lado2,
-  }
+//   let informacoesTriangulo = {
+//     largura: lado1,
+//     altura: lado2,
+//     perimetro: 2*(lado1 + lado2),
+//     area: lado1 * lado2,
+//   }
 
-  return informacoesTriangulo;
+//   return informacoesTriangulo;
 
-}
+// }
 
-criaRetangulo(lado1, lado2);
+// criaRetangulo(lado1, lado2);
 
 // EXERCÍCIO 15
-function anonimizaPessoa(pessoa) {
-
+const pessoa = {
+	nome: "Astrodev",
+	idade: 25,
+	email: "astrodev@labenu.com.br",
+	endereco: "Rua do Futuro, 4"
 }
+
+function anonimizaPessoa(pessoa) {
+  pessoa.nome = "ANÔNIMO"
+  
+  return pessoa;
+}
+
+anonimizaPessoa(pessoa);
 
 // EXERCÍCIO 16A
 function maioresDe18(arrayDePessoas) {
