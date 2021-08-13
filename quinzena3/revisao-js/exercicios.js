@@ -239,27 +239,34 @@
 // segundoMaiorEMenor(array);
 
 // EXERCÍCIO 11
-let ordemCrescente = [36,12,56,7,3]
+// let ordemCrescente = [36,12,56,7,3]
 
-function ordenaArray(array) {
-  var length = array.length;  
-    for (var i = 0; i < length; i++) { 
-          for (var j = 0; j < (length - i - 1); j++) { 
-                   if(array[j] > array[j+1]) {
-                           var tmp = array[j]; 
-                array[j] = array[j+1]; 
-                array[j+1] = tmp; 
-            }
-        }     
-    }
-    return array; 
-}
-ordenaArray(ordemCrescente);
+// function ordenaArray(array) {
+//   var length = array.length;  
+//     for (var i = 0; i < length; i++) { 
+//           for (var j = 0; j < (length - i - 1); j++) { 
+//                    if(array[j] > array[j+1]) {
+//                            var tmp = array[j]; 
+//                 array[j] = array[j+1]; 
+//                 array[j+1] = tmp; 
+//             }
+//         }     
+//     }
+//     return array; 
+// }
+// ordenaArray(ordemCrescente);
 
 
 // EXERCÍCIO 12
 function filmeFavorito() {
+  let filmeFavorito = {
+    nome: 'O Diabo Veste Prada',
+    ano: 2006,
+    diretor: 'David Frankel',
+    atores: ['Meryl Streep', 'Anne Hathaway', 'Emily Blunt', 'Stanley Tucci']
+  };
 
+  return filmeFavorito;
 }
 
 // EXERCÍCIO 13
