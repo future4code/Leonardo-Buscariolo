@@ -298,30 +298,65 @@
 // criaRetangulo(lado1, lado2);
 
 // EXERCÍCIO 15
-const pessoa = {
-	nome: "Astrodev",
-	idade: 25,
-	email: "astrodev@labenu.com.br",
-	endereco: "Rua do Futuro, 4"
-}
+// const pessoa = {
+// 	nome: "Astrodev",
+// 	idade: 25,
+// 	email: "astrodev@labenu.com.br",
+// 	endereco: "Rua do Futuro, 4"
+// }
 
-function anonimizaPessoa(pessoa) {
-  pessoa.nome = "ANÔNIMO"
+// function anonimizaPessoa(pessoa) {
+//   pessoa.nome = "ANÔNIMO"
   
-  return pessoa;
-}
+//   return pessoa;
+// }
 
-anonimizaPessoa(pessoa);
+// anonimizaPessoa(pessoa);
 
 // EXERCÍCIO 16A
-function maioresDe18(arrayDePessoas) {
+// let arrayDePessoas = [
+// 	{ nome: "Pedro", idade: 20 },
+// 	{ nome: "João", idade: 10 },
+// 	{ nome: "Paula", idade: 12 },
+// 	{ nome: "Artur", idade: 89 } 
+// ];
 
-}
+// function maioresDe18(arrayDePessoas) {
+//   let pessoasMaioresDe18 = [];
+
+//   for(index of arrayDePessoas) {
+//     if(index.idade >= 18) {
+//       pessoasMaioresDe18.push(index);
+      
+//     }
+//   }
+//   return pessoasMaioresDe18;
+// }
+
+// maioresDe18(arrayDePessoas);
+
 
 // EXERCÍCIO 16B
-function menoresDe18(arrayDePessoas) {
+let arrayDePessoas = [
+	{ nome: "Pedro", idade: 20 },
+	{ nome: "João", idade: 10 },
+	{ nome: "Paula", idade: 12 },
+	{ nome: "Artur", idade: 89 } 
+];
 
+function menoresDe18(arrayDePessoas) {
+  let pessoasMenoresDe18 = [];
+
+  for(index of arrayDePessoas) {
+    if(index.idade < 18) {
+      pessoasMenoresDe18.push(index);
+      
+    }
+  }
+  return pessoasMenoresDe18;
 }
+
+menoresDe18(arrayDePessoas);
 
 // EXERCÍCIO 17A
 function multiplicaArrayPor2(array) {
