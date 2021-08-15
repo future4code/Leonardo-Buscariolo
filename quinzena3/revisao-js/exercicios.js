@@ -337,41 +337,80 @@
 
 
 // EXERCÍCIO 16B
-let arrayDePessoas = [
-	{ nome: "Pedro", idade: 20 },
-	{ nome: "João", idade: 10 },
-	{ nome: "Paula", idade: 12 },
-	{ nome: "Artur", idade: 89 } 
-];
+// let arrayDePessoas = [
+// 	{ nome: "Pedro", idade: 20 },
+// 	{ nome: "João", idade: 10 },
+// 	{ nome: "Paula", idade: 12 },
+// 	{ nome: "Artur", idade: 89 } 
+// ];
 
-function menoresDe18(arrayDePessoas) {
-  let pessoasMenoresDe18 = [];
+// function menoresDe18(arrayDePessoas) {
+//   let pessoasMenoresDe18 = [];
 
-  for(index of arrayDePessoas) {
-    if(index.idade < 18) {
-      pessoasMenoresDe18.push(index);
+//   for(index of arrayDePessoas) {
+//     if(index.idade < 18) {
+//       pessoasMenoresDe18.push(index);
       
-    }
-  }
-  return pessoasMenoresDe18;
-}
+//     }
+//   }
+//   return pessoasMenoresDe18;
+// }
 
-menoresDe18(arrayDePessoas);
+// menoresDe18(arrayDePessoas);
 
 // EXERCÍCIO 17A
-function multiplicaArrayPor2(array) {
+// const array = [1, 2, 3, 4, 5, 6]
 
-}
+// function multiplicaArrayPor2(array) {
+//     let array2 = [];
+
+//     for (let num of array) {
+//         array2.push(num*2);
+//     }
+//     return array2;
+// }
+
+// multiplicaArrayPor2(array);
 
 // EXERCÍCIO 17B
-function multiplicaArrayPor2S(array) {
 
-}
+// const array = [1, 2, 3, 4, 5, 6]
+
+// function multiplicaArrayPor2S(array) {
+//     let array2 = [];
+//     let array3 = [];
+
+//     for (let num of array) {
+//         array2.push(num*2);
+//     }
+
+//     for (let num2 of array2) {
+//         array3.push(num2.toString());
+//     }
+//     return array3;
+// }
+
+// multiplicaArrayPor2S(array);
 
 // EXERCÍCIO 17C
-function verificaParidade(array) {
+const array = [1, 2, 3, 4, 5, 6]
 
+function verificaParidade(array) {
+    let array2 = [];
+    let par;
+    let impar;
+
+    for (let num of array) {
+        if(num % 2 === 0) {
+            array2.push(`${num} é par`);
+        } else {
+            array2.push(`${num} é ímpar`);
+        };
+    }
+    return array2;
 }
+
+verificaParidade(array);
 
 // EXERCÍCIO 18A
 function retornaPessoasAutorizadas(pessoas) {
