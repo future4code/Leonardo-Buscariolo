@@ -479,82 +479,101 @@
 // ordenaPorNome(consultas);
 
 // EXERCÍCIO 19B
-const consultas = [
-    { nome: "João", dataDaConsulta: "01/10/2021" },
-    { nome: "Pedro", dataDaConsulta: "02/07/2021" },
-    { nome: "Paula", dataDaConsulta: "03/11/2021" },
-    { nome: "Márcia",  dataDaConsulta: "04/05/2021" }
-]
-function ordenaPorData(consultasData) {
-    let novoArray = [];
+// const consultas = [
+//     { nome: "João", dataDaConsulta: "01/10/2021" },
+//     { nome: "Pedro", dataDaConsulta: "02/07/2021" },
+//     { nome: "Paula", dataDaConsulta: "03/11/2021" },
+//     { nome: "Márcia",  dataDaConsulta: "04/05/2021" }
+// ]
+// function ordenaPorData(consultasData) {
+//     let novoArray = [];
 
-    for(let data of consultasData) {
-        //alterando data em string para TimeStamp
-        let dataCompleta = data.dataDaConsulta.split('/');
-        let dia = Number(dataCompleta[0]);
-        let mes = Number(dataCompleta[1] - 1);
-        let ano = Number(dataCompleta[2]);
-        let diaConsultaFinal = new Date(ano, mes, dia);
-        let timeStmp = diaConsultaFinal.getTime();
-        data.dataDaConsulta = new Date(timeStmp) 
-    };
-    consultasData.sort(function(a,b) {
-        return a.dataDaConsulta < b.dataDaConsulta ? -1 : a.dataDaConsulta > b.dataDaConsulta ? 1 : 0;
-    });
-        //alterando data TimeStamp para string de volta
-    for(let data2 of consultasData) {
-        data2.dataDaConsulta = data2.dataDaConsulta.toString();
-        let dataCompleta2 = data2.dataDaConsulta.split(' ')
-        dataCompleta2.shift();
-        dataCompleta2.splice(3, 6);
+//     for(let data of consultasData) {
+//         //alterando data em string para TimeStamp
+//         let dataCompleta = data.dataDaConsulta.split('/');
+//         let dia = Number(dataCompleta[0]);
+//         let mes = Number(dataCompleta[1] - 1);
+//         let ano = Number(dataCompleta[2]);
+//         let diaConsultaFinal = new Date(ano, mes, dia);
+//         let timeStmp = diaConsultaFinal.getTime();
+//         data.dataDaConsulta = new Date(timeStmp) 
+//     };
+//     consultasData.sort(function(a,b) {
+//         return a.dataDaConsulta < b.dataDaConsulta ? -1 : a.dataDaConsulta > b.dataDaConsulta ? 1 : 0;
+//     });
+//         //alterando data TimeStamp para string de volta
+//     for(let data2 of consultasData) {
+//         data2.dataDaConsulta = data2.dataDaConsulta.toString();
+//         let dataCompleta2 = data2.dataDaConsulta.split(' ')
+//         dataCompleta2.shift();
+//         dataCompleta2.splice(3, 6);
 
-        switch (dataCompleta2[0]) {
-            case "Jan":
-                dataCompleta2[0] = "01"
-                break;
-            case "Feb":
-                dataCompleta2[0] = "02"
-                break;
-            case "Mar":
-                dataCompleta2[0] = "03"
-                break;
-            case "Apr":
-                dataCompleta2[0] = "04"
-                break;
-            case "May":
-                dataCompleta2[0] = "05"
-                break;
-            case "Jun":
-                dataCompleta2[0] = "06"
-                break;
-            case "Jul":
-                dataCompleta2[0] = "07"
-                break;
-            case "Aug":
-                dataCompleta2[0] = "08"
-                break;
-            case "Sep":
-                dataCompleta2[0] = "09"
-                break;
-            case "Oct":
-                dataCompleta2[0] = "10"
-                break;
-            case "Nov":
-                dataCompleta2[0] = "11"
-                break;
-            case "Dec":
-                dataCompleta2[0] = "12"
-                break;
-        }
+//         switch (dataCompleta2[0]) {
+//             case "Jan":
+//                 dataCompleta2[0] = "01"
+//                 break;
+//             case "Feb":
+//                 dataCompleta2[0] = "02"
+//                 break;
+//             case "Mar":
+//                 dataCompleta2[0] = "03"
+//                 break;
+//             case "Apr":
+//                 dataCompleta2[0] = "04"
+//                 break;
+//             case "May":
+//                 dataCompleta2[0] = "05"
+//                 break;
+//             case "Jun":
+//                 dataCompleta2[0] = "06"
+//                 break;
+//             case "Jul":
+//                 dataCompleta2[0] = "07"
+//                 break;
+//             case "Aug":
+//                 dataCompleta2[0] = "08"
+//                 break;
+//             case "Sep":
+//                 dataCompleta2[0] = "09"
+//                 break;
+//             case "Oct":
+//                 dataCompleta2[0] = "10"
+//                 break;
+//             case "Nov":
+//                 dataCompleta2[0] = "11"
+//                 break;
+//             case "Dec":
+//                 dataCompleta2[0] = "12"
+//                 break;
+//         }
 
-        data2.dataDaConsulta = `${dataCompleta2[1]}/${dataCompleta2[0]}/${dataCompleta2[2]}`
-    }
-    return consultasData;
-}   
+//         data2.dataDaConsulta = `${dataCompleta2[1]}/${dataCompleta2[0]}/${dataCompleta2[2]}`
+//     }
+//     return consultasData;
+// }   
 
-ordenaPorData(consultas);
+// ordenaPorData(consultas);
 
 // EXERCÍCIO 20
-function calculaSaldo(contas) {
+const contas = [
+	{ cliente: "João", saldoTotal: 1000, compras: [100, 200, 300] },
+	{ cliente: "Paula", saldoTotal: 7500, compras: [200, 1040] },
+	{ cliente: "Pedro", saldoTotal: 10000, compras: [5140, 6100, 100, 2000] },
+	{ cliente: "Luciano", saldoTotal: 100, compras: [100, 200, 1700] },
+	{ cliente: "Artur", saldoTotal: 1800, compras: [200, 300] },
+	{ cliente: "Soter", saldoTotal: 1200, compras: [] }
+]
 
+function calculaSaldo(contas) {
+    for (let contaCliente of contas) {
+        let gastosCliente = 0;
+
+        for (gastoIndividual of contaCliente.compras) {
+            gastosCliente =  gastosCliente + gastoIndividual;
+        }
+        contaCliente.saldoTotal = contaCliente.saldoTotal - gastosCliente;
+    }
+    return contas;
 }
+
+calculaSaldo(contas);
