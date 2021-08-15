@@ -393,34 +393,73 @@
 // multiplicaArrayPor2S(array);
 
 // EXERCÍCIO 17C
-const array = [1, 2, 3, 4, 5, 6]
+// const array = [1, 2, 3, 4, 5, 6]
 
-function verificaParidade(array) {
-    let array2 = [];
-    let par;
-    let impar;
+// function verificaParidade(array) {
+//     let array2 = [];
+//     let par;
+//     let impar;
 
-    for (let num of array) {
-        if(num % 2 === 0) {
-            array2.push(`${num} é par`);
-        } else {
-            array2.push(`${num} é ímpar`);
-        };
-    }
-    return array2;
-}
+//     for (let num of array) {
+//         if(num % 2 === 0) {
+//             array2.push(`${num} é par`);
+//         } else {
+//             array2.push(`${num} é ímpar`);
+//         };
+//     }
+//     return array2;
+// // }
 
-verificaParidade(array);
+// verificaParidade(array);
 
 // EXERCÍCIO 18A
-function retornaPessoasAutorizadas(pessoas) {
+// const pessoas = [
+// 	{ nome: "A", idade: 12, altura: 1.8},
+// 	{ nome: "B", idade: 20, altura: 1.3},
+// 	{ nome: "C", idade: 15, altura: 1.9},
+// 	{ nome: "D", idade: 22, altura: 1.8},
+// 	{ nome: "E", idade: 10, altura: 1.2},
+// 	{ nome: "F", idade: 70, altura: 1.9}
+// ]
 
-}
+// function retornaPessoasAutorizadas(pessoas) {
+//     let pessoaAutorizada = [];
+
+//     for(let autorizada of pessoas) {
+//         if (autorizada.idade > 14 && autorizada.idade < 60 && autorizada.altura >= 1.5) {
+//             pessoaAutorizada.push(autorizada);
+//         }
+//     }
+//     return pessoaAutorizada;
+// }
+
+// retornaPessoasAutorizadas(pessoas);
 
 // EXERCÍCIO 18B
-function retornaPessoasNaoAutorizadas(pessoas) {
+const pessoas = [
+	{ nome: "A", idade: 12, altura: 1.8},
+	{ nome: "B", idade: 20, altura: 1.3},
+	{ nome: "C", idade: 15, altura: 1.9},
+	{ nome: "D", idade: 22, altura: 1.8},
+	{ nome: "E", idade: 10, altura: 1.2},
+	{ nome: "F", idade: 70, altura: 1.9}
+]
 
+function retornaPessoasNaoAutorizadas(pessoas) {
+    let pessoaNaoAutorizada = [];
+    let pessoaAutorizada = [];
+
+    for(let autorizada of pessoas) {
+        if (autorizada.idade > 14 && autorizada.idade < 60 && autorizada.altura >= 1.5) {
+            pessoaAutorizada.push(autorizada);
+        } else {
+            pessoaNaoAutorizada.push(autorizada);
+        };
+    };
+    return pessoaNaoAutorizada;
 }
+
+retornaPessoasNaoAutorizadas(pessoas);
 
 // EXERCÍCIO 19A
 function ordenaPorNome(consultasNome) {
