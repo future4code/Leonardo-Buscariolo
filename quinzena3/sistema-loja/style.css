@@ -1,0 +1,146 @@
+* {
+   margin: 0;
+   padding: 0; 
+   font-family:Arial, Helvetica, sans-serif;
+}
+
+#social-media img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#menu-bar #logo {
+    width: 55px;
+    height: 55px;
+    position: relative;
+    left: -150px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+
+#menu-bar {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content:center; 
+    background-color: #94618E;
+    
+}
+
+#menu-bar a {
+    margin-right: 20px;
+    background-color: transparent;
+    border: 1.5px solid #49274A;
+    border-radius: 20px;
+    padding: 4px 10px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: #49274A; 
+    font-size: 14px;
+}
+
+#menu-bar a:hover {
+    background-color: #49274A;
+    color:#F8EEE7;
+}
+
+main, footer {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 1200px;
+    background-image:url('img/background-market.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.sub-container {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    color: #F8EEE7;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items:center;
+    height: 78vh;
+}
+
+.sub-container div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.tabela-estoque img {
+    height: 100px;
+    width: auto;
+}
+
+#rodape {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px
+}
+
+.navegacao a {
+    margin-right: 20px;
+    background-color: #94618ec7;
+    border: 1.5px solid #49274A;
+    border-radius: 20px;
+    padding: 4px 10px;
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: #F8EEE7; 
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.navegacao a:hover {
+    background-color: #49274A;
+    color:#F8EEE7;
+}
+
+td, th {
+    border: 1px solid black;
+}
+
+form div input {
+    margin-bottom: 20px;
+    
+}
+
+.h2-produto {
+    margin-bottom: 20px;
+}
+
+.h2-funcionarios {
+    margin-bottom: 20px;
+}
+
+.lista-funcionario li {
+    margin-bottom: 10px;
+}
+
+
+
