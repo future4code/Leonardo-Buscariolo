@@ -26,7 +26,8 @@ button:focus {
 }
 
 img {
-    width: 100px;
+    width: 50px;
+    height: auto;
 }
 
 div>p:first-child {
