@@ -76,7 +76,7 @@ div img {
 }
 
 #container-de-descricao>ol {
-    padding: 15px 0px;
+    padding: 15px 10px;
 }
 
 #container-para-comprar {
@@ -92,6 +92,10 @@ div img {
     color: #c44f00;
     padding: 100px 0;
     font-size: 60px;
+}
+
+.lista-home {
+    list-style:upper-roman
 }
 
 
@@ -137,6 +141,8 @@ td button:hover {
     border-radius: 5px;
     font-size: 10px;
     color: black;
+    margin-left: 45vw;
+    margin-top: 20px;
 }
 
 #back-button:hover {
