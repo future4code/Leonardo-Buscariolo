@@ -147,3 +147,8 @@ input {
     border: none;
     border-bottom: 2px solid black;
 }
+
+.tabela-produtos {
+    display: block;
+    margin-left: 30vw;
+}
