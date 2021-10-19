@@ -42,7 +42,7 @@ export default class App extends React.Component {
 
   tocarMusica = (musicaUrl) => {
     this.setState({musicaTocando: musicaUrl})
-    console.log(this.state.musicaTocando)
+    console.log("MusicaUrl:", musicaUrl)
   }
 
   pegarPlaylists = () => {
@@ -287,7 +287,7 @@ export default class App extends React.Component {
         />
         {this.qualTelaEsta()}
         <PlayerArea 
-        state={this.state}
+        musicaTocandoProps={this.state.musicaTocando}
         />
       </AppContainer>
     );
