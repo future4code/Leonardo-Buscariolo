@@ -1,8 +1,7 @@
 import React from 'react';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import { useEffect } from 'react/cjs/react.development';
 
 const SmallProfileCardContainer = styled.div`
     height: 100%;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -28,6 +28,7 @@ const ProfileCardArea = styled.div`
     box-shadow: 4px 2px 5px grey;
     p, h2 {
         padding-bottom: 5px;
+        color: grey;
     }
 `;
 
