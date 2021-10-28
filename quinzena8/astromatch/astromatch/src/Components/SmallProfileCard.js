@@ -13,6 +13,7 @@ const SmallProfileCardContainer = styled.div`
     align-items: flex-start;
     padding: 10px;
     overflow-x: hidden;
+    font-family: 'Exo 2', sans-serif;
 `;
 
 const SmallProfileCardItem = styled.div`
@@ -57,9 +58,9 @@ return (
     <SmallProfileCardContainer>
         {matchProfile.map((profile, index) => {
             return (
-                <SmallProfileCardItem>
-                    <SmallCardPicture src={profile.photo} />
-                    <p>{profile.name}</p>
+                <SmallProfileCardItem key={index}>
+                    <SmallCardPicture key={index + index} src={profile.photo} />
+                    <p key={index + 1}>{profile.name}</p>
                 </SmallProfileCardItem>
             );
         })}

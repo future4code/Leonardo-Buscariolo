@@ -1,6 +1,6 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import axios from 'axios';
 
 const ProfileCardContainer = styled.div`
@@ -28,7 +28,8 @@ const ProfileCardArea = styled.div`
     box-shadow: 4px 2px 5px grey;
     p, h2 {
         padding-bottom: 5px;
-    }
+        text-shadow: 0px 1px 4px black;
+    };
 `;
 
 const ProfileCard = (props) => {
