@@ -43,7 +43,6 @@ const ButtonArea = styled.div`
   display: flex;
   justify-content: space-around;
   width: 500px;
-  margin: 20px;
 `;
 
 const BackButton = styled.button`
@@ -62,7 +61,15 @@ const SendButton = BackButton;
 
 
 const ApplicationFormPage = () => {
-  const [form, setForm] = useState({name: "", age: "", applicationText: "", profession: "", country: "", tripId:""})
+  const [form, setForm] = useState(
+    {
+      name: "", 
+      age: "", 
+      applicationText: "", 
+      profession: "", 
+      country: "", 
+      tripId:""
+    })
 
   const data = useRequestData(
     "https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardo-sofiati-banu/trips", "getTrips"
@@ -83,7 +90,7 @@ const ApplicationFormPage = () => {
   }
 
   const cleanFields = () => {
-    setForm({name: "", age: "", applicationText: "", profession: "", country: "", tripId:""})
+    setForm({name: "", age: "", applicationText: "", profession: "", country: null, tripId:""})
   }
 
   const handleClick = (e) => {
@@ -127,6 +134,9 @@ const ApplicationFormPage = () => {
         placeholder="Nome"
         value={form.name}
         onChange={onChange}
+        pattern={"^.{5,}"}
+        title={"O nome deve ter no mínimo 5 caracteres"}
+        required
         ></input>
         <input 
         name={"age"}
@@ -163,7 +173,7 @@ const ApplicationFormPage = () => {
             })}
           </select>
         <ButtonArea>
-          <SendButton onClick={handleClick}>Enviar</SendButton>
+          <SendButton>Enviar</SendButton>
         </ButtonArea>
         </form>
       </FormSelectContainer>

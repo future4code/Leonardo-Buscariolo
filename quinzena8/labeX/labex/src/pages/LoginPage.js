@@ -23,7 +23,7 @@ const LoginArea = styled.div`
   }
 `;
 
-const FormArea = styled.div`
+const FormArea = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,7 +39,7 @@ const ButtonArea = styled.div`
   display: flex;
   justify-content: space-around;
   width: 500px;
-  margin: 20px;
+  margin: 10px;
 `;
 
 const BackButton = styled.button`
@@ -59,18 +59,34 @@ const LoginButton = BackButton;
 const LoginPage = () => {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [form, setForm] = useState({
+    email: '',
+    password: ''
+  })
+
+  const onChange = (e) => {
+    const {name, value} = e.target
+    setForm({...form, [name]: value})
+  }
+
+  const cleanFields = () => {
+    setForm({
+      email: '',
+      password: ''
+    })
+  }
 
   const goBack = () => {
     navigate("/");
   };
 
-  const onClickLogin = () => {
-    axios.post('https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardo-sofiati-banu/login', {email, password})
+  const handleClick = (e) => {
+    e.preventDefault()
+    axios.post('https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardo-sofiati-banu/login', form)
     .then((response) => {
       if(response?.data?.token){
         window.localStorage.setItem("token", response.data.token)
+        cleanFields();
         navigate("/admin/trips/list");
       }
     })
@@ -79,34 +95,38 @@ const LoginPage = () => {
     })
   }
 
-  const onChangeEmail= (e) => {
-    setEmail(e.target.value)
-  }
-
-  const onChangePassword = (e) => {
-    setPassword(e.target.value)
-  }
-
   return (
     <LoginContainer>
       <LoginArea>
         <h1>Login</h1>
-        <FormArea>
-          <input type="email" 
+        <FormArea onSubmit={handleClick}>
+          <input 
+          type="email" 
           placeholder="E-mail"
-          value={email}
-          onChange={onChangeEmail}
+          name={"email"}
+          value={form.email}
+          onChange={onChange}
+          required
+          pattern={"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"}
+          title={"Insira um e-mail válido"}
           ></input>
-          <input type="password" 
+          <input 
+          type="password" 
+          name={"password"}
           placeholder="Senha"
-          value={password}
-          onChange={onChangePassword}
+          value={form.password}
+          onChange={onChange}
+          pattern={"^.{3,}"}
+          title={"Sua senha deve ter no mínimo 3 caracteres"}
+          required
           ></input>
+          <ButtonArea>
+            <LoginButton>Entrar</LoginButton>
+          </ButtonArea>
         </FormArea>
       </LoginArea>
       <ButtonArea>
         <BackButton onClick={goBack}>Voltar</BackButton>
-        <LoginButton onClick={onClickLogin}>Entrar</LoginButton>
       </ButtonArea>
     </LoginContainer>
   );

@@ -72,7 +72,7 @@ const TravelCard = styled.div`
   }
   button {
     margin-right: 10px;
-    width: 20px;
+    padding: 5px;
   }
   :hover {
     background-color: #b5dfeb;
@@ -85,7 +85,7 @@ const AdminHomePage = () => {
   const navigate = useNavigate();
 
   const goBack = () => {
-    navigate(-1);
+    navigate("/");
   };
 
   const createTrip = () => {
@@ -104,6 +104,21 @@ const AdminHomePage = () => {
     "https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardo-sofiati-banu/trips", "getTrips"
   );
 
+  const deleteTrip = (tripId) => {
+    axios.delete(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardo-sofiati-banu/trips/${tripId}`, {
+      headers: {
+        auth: window.localStorage.getItem('token')
+      }
+    })
+    .then((response) => {
+      console.log(response)
+      alert('Viagem deletada com sucesso')
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  }
+
   return (
     <ContainerAdminPage>
       {console.log(window.localStorage.getItem('token'))}
@@ -120,7 +135,7 @@ const AdminHomePage = () => {
             return (
               <TravelCard key={data.name} onClick={() => goToTripDetails(data?.id)}>
                 <p>{data.name}</p>
-                <button>X</button>
+                <button onClick={() => deleteTrip(data.id)}>X</button>
               </TravelCard>
             );
           })}

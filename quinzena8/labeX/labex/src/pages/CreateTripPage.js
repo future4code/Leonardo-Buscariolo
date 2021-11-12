@@ -17,13 +17,13 @@ const CreateTripContainer = styled.div`
   }
 `;
 
-const FormSelectContainer = styled.div`
+const FormSelectContainer = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  form,
+  div,
   input {
     margin-bottom: 15px;
   }
@@ -62,63 +62,80 @@ const CreateButton = BackButton;
 const CreateTripPage = () => {
   useProtectedPage();
 
-  const [tripName, setTripName] = useState('');
-  const [tripPlanet, setTripPlanet] = useState('');
-  const [tripDate, setTripDate] = useState('');
-  const [tripDiscription, setTripDiscription] = useState('');
-  const [tripDuration, setTripDuration] = useState('');
-  
+  const [form, setForm] = useState({
+    name: "",
+    planet: "",
+    date: "",
+    description: "",
+    durationInDays: ""
+  })
+
+  const onChange = (e) => {
+    const {name, value} = e.target
+    setForm({...form, [name]: value})
+  }
+
+  const cleanFields = () => {
+    setForm({
+      name: "",
+      planet: "",
+      date: "",
+      description: "",
+      durationInDays: ""
+    })
+  }
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardo-sofiati-banu/trips`, form, {
+      headers: {
+        auth: window.localStorage.getItem('token')
+      }
+    })
+    .then((response) => {
+      console.log(response)
+      console.log(form)
+      alert("Viagem criada com sucesso!");
+      cleanFields();
+    })
+    .catch((err) => {
+      console.log(err.message)
+      console.log(form)
+    })
+  }
+
   const navigate = useNavigate();
 
   const goBack = () => {
-    navigate(-1);
-  };
-
-  const createTrip = () => {
     navigate("/admin/trips/list");
-    alert("Viagem criada com sucesso!");
   };
 
-  const onChangeName = (e) => {
-    setTripName(e.target.value)
-  } 
-
-  const onChangePlanet = (e) => {
-    setTripPlanet(e.target.value)
-  } 
-  const onChangeDate = (e) => {
-    setTripDate(e.target.value)
-  } 
-
-  const onChangeDiscription = (e) => {
-    setTripDiscription(e.target.value)
-  } 
-
-  const onChangeDuration = (e) => {
-    setTripDuration(Number(e.target.value))
-  } 
 
   return (
     <CreateTripContainer>
-      {console.log(tripName)}
-      {console.log(tripPlanet)}
-      {console.log(tripDate)}
-      {console.log(tripDiscription)}
-      {console.log(tripDuration)}
       <div>
         <h1>Criar Viagem</h1>
       </div>
-      <FormSelectContainer>
-        <input type="text" 
+      <FormSelectContainer onSubmit={handleClick}>
+        <input 
+        type="text" 
         placeholder="Nome"
-        value={tripName}
-        onChange={onChangeName}
+        name={"name"}
+        value={form.name}
+        onChange={onChange}
+        pattern={"^.{3,}"}
+        title={"Mínimo 5 caracteres"}
+        required
         ></input>
-        <form>
-          <select name="planets"
-          onChange={onChangePlanet}
+        <div>
+          <select 
+          onChange={onChange}
+          name={"planet"}
+          required
           >
-            <option value="default" defaultValue>
+            <option 
+            value={form.name}
+            defaultValue>
               Escolha um Planeta
             </option>
               {planets?.map((planets) => {
@@ -127,23 +144,39 @@ const CreateTripPage = () => {
                 )
             })}
           </select>
-        </form>
-        <input type="date" placeholder="DD/MM/AAAA"
-        value={tripDate}
-        onChange={onChangeDate}
+        </div>
+        <input 
+        onChange={onChange}
+        type="text" 
+        placeholder="DD/MM/AAAA"
+        name={"date"}
+        value={form.date}
+        pattern={"^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$"}
+        title={"A data deve estar no formato DD/MM/AAA"}
+        required
         ></input>
-        <input type="text" placeholder="Descrição"
-        value={tripDiscription}
-        onChange={onChangeDiscription}
+        <input 
+        onChange={onChange}
+        type="text" 
+        placeholder="Descrição"
+        name={"description"}
+        value={form.description}
+        required
         ></input>
-        <input type="number" placeholder="Duração em dias"
-        value={tripDuration}
-        onChange={onChangeDuration}
+        <input 
+        onChange={onChange}
+        type="number" 
+        placeholder="Duração em dias"
+        name={"durationInDays"}
+        value={form.durationInDays}
+        required
         ></input>
+        <ButtonArea>
+          <CreateButton>Criar</CreateButton>
+        </ButtonArea>
       </FormSelectContainer>
       <ButtonArea>
         <BackButton onClick={goBack}>Voltar</BackButton>
-        <CreateButton onClick={createTrip}>Criar</CreateButton>
       </ButtonArea>
     </CreateTripContainer>
   );
