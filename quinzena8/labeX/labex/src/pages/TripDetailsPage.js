@@ -3,6 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 import useRequestData from "../hooks/useRequestData";
+import useProtectedPage from "../hooks/useProtectedPage";
 
 const ContainerTripDetails = styled.div`
   display: flex;
@@ -65,34 +66,58 @@ const BackButton = styled.button`
 const AdminButton = BackButton;
 
 const TripDetailsPage = (tripId) => {
+  useProtectedPage();
+
   const navigate = useNavigate();
 
   const goBack = () => {
     navigate(-1);
   };
 
-  const approveCandidate = () => {
-    alert("Candidato Aprovado!");
+  useEffect(() => {
+      
+  }, [])
+
+  //PRECISO DESCIBRIR COMO RENDERIZAR AUTOMATICO QUANDO APROVO OU DECLINO OS CANDIDATOS NA TELA, PROVAVELMENT É USEEFFECT MAS NÃO DESCOBRI COMO AINDA
+
+  
+  const approveCandidate = (selectedId) => {
+    axios.put(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardo-sofiati-banu/trips/${data?.data.trip.id}/candidates/${selectedId}/decide`, {
+      approve: true
+    }, {
+      headers: {
+        auth: window.localStorage.getItem("token"),
+      }
+    })
+    .then((response) => {
+      console.log(response)
+      alert("Candidato Aprovado!");
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
   };
 
-  const declineCandidate = () => {
-    alert("Candidado Reprovado");
+  const declineCandidate = (selectedId) => {
+    axios.put(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardo-sofiati-banu/trips/${data?.data.trip.id}/candidates/${selectedId}/decide`, {
+      approve: false
+    }, {
+      headers: {
+        auth: window.localStorage.getItem("token"),
+      }
+    })
+    .then((response) => {
+      console.log(response)
+      alert("Candidato Aprovado!");
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
   };
   
   const pathParams = useParams();
 
-  const data = useRequestData(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardo-sofiati-banu/trip/${pathParams.id}`, 'getTripDetails', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkxxTEUwdU03OFl3NXdOR1J5YXVjIiwiZW1haWwiOiJhc3Ryb2RldkBnbWFpbC5jb20uYnIiLCJpYXQiOjE2MzY0MjA0OTJ9.E8SE51f8wyZj0XxQCSb9N6s_7iQkAkIf62qslFyKLrQ"); 
-  //depois preciso criar essa autenticação e token conforme aula de hoje 08/11
-
-  const verifyApprovedCandidates = () => {
-    if(data?.data.trip.approved.length > 0) {
-      data?.data.trip.approved.map((candidato) => {
-        return <li>{candidato.name}</li>
-      })
-    } else {
-      return <li>Aida não existem candidatos aprovados</li>
-    }
-  }
+  const data = useRequestData(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardo-sofiati-banu/trip/${pathParams.id}`, 'getTripDetails', window.localStorage.getItem("token")); 
 
   return (
     <ContainerTripDetails>
@@ -115,15 +140,17 @@ const TripDetailsPage = (tripId) => {
             <p>País: {candidato.country}</p>
             <p>Texto de Candidatura: {candidato.applicationText}</p>
             <ButtonArea>
-              <BackButton onClick={approveCandidate}>Aprovar</BackButton>
-              <BackButton onClick={declineCandidate}>Reprovar</BackButton>
+              <BackButton onClick={() => approveCandidate(candidato.id)}>Aprovar</BackButton>
+              <BackButton onClick={() => declineCandidate(candidato.id)}>Reprovar</BackButton>
             </ButtonArea>
           </CandidatesCard>
           )
         })}
       <h1>Candidatos Aprovados</h1>
       <ul>
-        {verifyApprovedCandidates()}
+        {data?.data.trip.approved.map((candidato) => {
+          return <li key={candidato.name}>{candidato?.name}</li>
+      })}
       </ul>
     </ContainerTripDetails>
   );

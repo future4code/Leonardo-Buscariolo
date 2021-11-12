@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import useProtectedPage from "../hooks/useProtectedPage";
+import planets from "../assets/Planets";
 
 const CreateTripContainer = styled.div`
   display: flex;
@@ -58,6 +60,14 @@ const BackButton = styled.button`
 const CreateButton = BackButton;
 
 const CreateTripPage = () => {
+  useProtectedPage();
+
+  const [tripName, setTripName] = useState('');
+  const [tripPlanet, setTripPlanet] = useState('');
+  const [tripDate, setTripDate] = useState('');
+  const [tripDiscription, setTripDiscription] = useState('');
+  const [tripDuration, setTripDuration] = useState('');
+  
   const navigate = useNavigate();
 
   const goBack = () => {
@@ -69,28 +79,67 @@ const CreateTripPage = () => {
     alert("Viagem criada com sucesso!");
   };
 
+  const onChangeName = (e) => {
+    setTripName(e.target.value)
+  } 
+
+  const onChangePlanet = (e) => {
+    setTripPlanet(e.target.value)
+  } 
+  const onChangeDate = (e) => {
+    setTripDate(e.target.value)
+  } 
+
+  const onChangeDiscription = (e) => {
+    setTripDiscription(e.target.value)
+  } 
+
+  const onChangeDuration = (e) => {
+    setTripDuration(Number(e.target.value))
+  } 
+
   return (
     <CreateTripContainer>
+      {console.log(tripName)}
+      {console.log(tripPlanet)}
+      {console.log(tripDate)}
+      {console.log(tripDiscription)}
+      {console.log(tripDuration)}
       <div>
         <h1>Criar Viagem</h1>
       </div>
       <FormSelectContainer>
-        <input type="text" placeholder="Nome"></input>
+        <input type="text" 
+        placeholder="Nome"
+        value={tripName}
+        onChange={onChangeName}
+        ></input>
         <form>
-          <select name="planets">
-            <option value="planet1" defaultValue>
+          <select name="planets"
+          onChange={onChangePlanet}
+          >
+            <option value="default" defaultValue>
               Escolha um Planeta
             </option>
-            <option value="planet1">Planeta 1</option>
-            <option value="planet1">Planeta 1</option>
-            <option value="planet1">Planeta 1</option>
-            <option value="planet1">Planeta 1</option>
-            <option value="planet1">Planeta 1</option>
+              {planets?.map((planets) => {
+                return(
+                  <option key={planets.position} value={planets.name}>{planets.name}</option>
+                )
+            })}
           </select>
         </form>
-        <input type="date" placeholder="DD/MM/AAAA"></input>
-        <input type="text" placeholder="Descrição"></input>
-        <input type="number" placeholder="Duração em dias"></input>
+        <input type="date" placeholder="DD/MM/AAAA"
+        value={tripDate}
+        onChange={onChangeDate}
+        ></input>
+        <input type="text" placeholder="Descrição"
+        value={tripDiscription}
+        onChange={onChangeDiscription}
+        ></input>
+        <input type="number" placeholder="Duração em dias"
+        value={tripDuration}
+        onChange={onChangeDuration}
+        ></input>
       </FormSelectContainer>
       <ButtonArea>
         <BackButton onClick={goBack}>Voltar</BackButton>

@@ -47,7 +47,6 @@ const Home = () => {
 
   const goToLogin = () => {
     navigate("/login");
-    //mais tarde fazer um if antes de abrir o login para ver se o usuário ta autenticado já ou não, se estiver, enviar direto para a AdminArea se não estiver, mandar pra LoginArea mesmo
   };
 
   return (

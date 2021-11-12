@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import useRequestData from "../hooks/useRequestData";
 import TripDetailsPage from "./TripDetailsPage";
+import useProtectedPage from "../hooks/useProtectedPage";
 
 const ContainerAdminPage = styled.div`
   display: flex;
@@ -79,6 +80,8 @@ const TravelCard = styled.div`
 `;
 
 const AdminHomePage = () => {
+  useProtectedPage();
+
   const navigate = useNavigate();
 
   const goBack = () => {
@@ -103,6 +106,7 @@ const AdminHomePage = () => {
 
   return (
     <ContainerAdminPage>
+      {console.log(window.localStorage.getItem('token'))}
       <h1>Painel Administrativo</h1>
       <ButtonArea>
         <BackButton onClick={goBack}>Voltar</BackButton>

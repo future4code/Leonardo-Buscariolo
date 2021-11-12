@@ -35,6 +35,7 @@ const FormSelectContainer = styled.div`
   select,
   input {
     padding: 5px;
+    margin-bottom: 15px;
   }
 `;
 
@@ -61,12 +62,7 @@ const SendButton = BackButton;
 
 
 const ApplicationFormPage = () => {
-  const [tripId, setTripId] = useState('');
-  const [name, setName] = useState('');
-  const [age, setAge] = useState('');
-  const [candidateText, setCandidateText] = useState('');
-  const [profession, setProfession] = useState('');
-  const [country, setCountry] = useState('');
+  const [form, setForm] = useState({name: "", age: "", applicationText: "", profession: "", country: "", tripId:""})
 
   const data = useRequestData(
     "https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardo-sofiati-banu/trips", "getTrips"
@@ -75,54 +71,35 @@ const ApplicationFormPage = () => {
   const navigate = useNavigate();
 
   const goBack = () => {
-    navigate(-1);
+    navigate("/trips/list");
   };
 
-  let body = {};
-
-  const sendApplicationForm = () => {
-    if (age >= 18) {
-      // body = {
-      //   name: `${name}`,
-      //   age: `${age}`,
-      //   applicationText: `${candidateText}`,
-      //   profession: `${profession}`,
-      //   country: `${country}`
-      // }
-      alert("Candidatura enviada com sucesso");
-      navigate(-1);
-      // console.log(body)
-      // return body
-    } else {
-      alert('Você deve ter +18 anos para se candidatar')
-    }
-  };
 
     // const verificar = useRequestData(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardo-sofiati-banu/trips/${tripId}/apply`, 'applyToTrips', '',body)
   
-  const onChangeName = (e) => {
-    setName(e.target.value)
-  };
-
-  const onChangeAge = (e) => {
-    setAge(e.target.value)
+  const onChange = (e) => {
+    const {name, value} = e.target
+    setForm({...form, [name]: value})
   }
 
-  const onChangeText = (e) => {
-    setCandidateText(e.target.value)
+  const cleanFields = () => {
+    setForm({name: "", age: "", applicationText: "", profession: "", country: "", tripId:""})
   }
 
-  const onChangeProfession = (e) => {
-    setProfession(e.target.value)
+  const handleClick = (e) => {
+    e.preventDefault()
+    axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardo-sofiati-banu/trips/${form.tripId}/apply`, form)
+    .then((response) => {
+      console.log(response)
+      console.log(form)
+      alert("Candidatura enviada com sucesso!");
+      cleanFields();
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
   }
 
-  const onChangeTrips = (e) => {
-    setTripId(e.target.value)
-  }
-
-  const onChangeCountry = (e) => {
-    setCountry(e.target.value)
-  }
 
   return (
     <ApplicationFromContainer>
@@ -130,12 +107,12 @@ const ApplicationFormPage = () => {
         <h1>Inscreva-se para uma viagem</h1>
       </div>
       <FormSelectContainer>
-        <form>
+        <form onSubmit={handleClick}>
           <select 
-          name="trips"
-          onChange={onChangeTrips}
+          name={"tripId"}
+          onChange={onChange}
           >
-            <option value="default" defaultValue>
+            <option value={form.tripId} defaultValue>
               Escolha uma viagem
             </option>
             {data?.data.trips.map((trip) => {
@@ -144,37 +121,39 @@ const ApplicationFormPage = () => {
               )
             })}
           </select>
-        </form>
         <input 
+        name={"name"}
         type="text" 
         placeholder="Nome"
-        value={name}
-        onChange={onChangeName}
+        value={form.name}
+        onChange={onChange}
         ></input>
         <input 
+        name={"age"}
         type="number" 
         placeholder="Idade"
-        value={age}
-        onChange={onChangeAge}
+        value={form.age}
+        onChange={onChange}
         ></input>
         <input 
+        name={"applicationText"}
         type="text" 
         placeholder="Texto de Candidatura"
-        value={candidateText}
-        onChange={onChangeText}
+        value={form.applicationText}
+        onChange={onChange}
         ></input>
         <input 
+        name={"profession"}
         type="text" 
         placeholder="Profissão"
-        value={profession}
-        onChange={onChangeProfession}
+        value={form.profession}
+        onChange={onChange}
         ></input>
-        <form>
           <select 
-          name="country"
-          onChange={onChangeCountry}
+          name={"country"}
+          onChange={onChange}
           >
-            <option value="default" defaultValue>
+            <option value={form.country} defaultValue>
               Escolha um País
             </option>
             {Countries?.map((country) => {
@@ -183,12 +162,14 @@ const ApplicationFormPage = () => {
               )
             })}
           </select>
+        <ButtonArea>
+          <SendButton onClick={handleClick}>Enviar</SendButton>
+        </ButtonArea>
         </form>
       </FormSelectContainer>
-      <ButtonArea>
-        <BackButton onClick={goBack}>Voltar</BackButton>
-        <SendButton onClick={sendApplicationForm}>Enviar</SendButton>
-      </ButtonArea>
+        <ButtonArea>
+          <BackButton onClick={goBack}>Voltar</BackButton>
+        </ButtonArea>
     </ApplicationFromContainer>
   );
 };

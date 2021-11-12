@@ -66,11 +66,6 @@ const LoginPage = () => {
     navigate("/");
   };
 
-  // const goToAdminArea = () => {
-  //   navigate("/admin/trips/list");
-  //   //Depois preciso aprender mais sobre validação para validar a criação e tal de logins
-  // };
-
   const onClickLogin = () => {
     axios.post('https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardo-sofiati-banu/login', {email, password})
     .then((response) => {
@@ -94,7 +89,6 @@ const LoginPage = () => {
 
   return (
     <LoginContainer>
-      {console.log('email: ',email, 'senha: ', password)}
       <LoginArea>
         <h1>Login</h1>
         <FormArea>
