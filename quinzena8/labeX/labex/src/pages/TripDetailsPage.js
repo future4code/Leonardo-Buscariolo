@@ -70,13 +70,11 @@ const TripDetailsPage = (tripId) => {
 
   const navigate = useNavigate();
 
+  const [approval, setApproval] = useState('');
+
   const goBack = () => {
     navigate(-1);
   };
-
-  useEffect(() => {
-      
-  }, [])
 
   //PRECISO DESCIBRIR COMO RENDERIZAR AUTOMATICO QUANDO APROVO OU DECLINO OS CANDIDATOS NA TELA, PROVAVELMENT É USEEFFECT MAS NÃO DESCOBRI COMO AINDA
 
@@ -90,7 +88,9 @@ const TripDetailsPage = (tripId) => {
       }
     })
     .then((response) => {
-      console.log(response)
+      console.log(response.data.success)
+      setApproval(response.data.success)
+      setApproval(!approval)
       alert("Candidato Aprovado!");
     })
     .catch((err) => {
@@ -108,7 +108,9 @@ const TripDetailsPage = (tripId) => {
     })
     .then((response) => {
       console.log(response)
-      alert("Candidato Aprovado!");
+      setApproval(response.data.success)
+      setApproval(!approval)
+      alert("Candidato Reprovado :(");
     })
     .catch((err) => {
       console.log(err.message)
@@ -117,7 +119,7 @@ const TripDetailsPage = (tripId) => {
   
   const pathParams = useParams();
 
-  const data = useRequestData(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardo-sofiati-banu/trip/${pathParams.id}`, 'getTripDetails', window.localStorage.getItem("token")); 
+  const data = useRequestData(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/leonardo-sofiati-banu/trip/${pathParams.id}`, 'getTripDetails', window.localStorage.getItem("token"), approval); 
 
   return (
     <ContainerTripDetails>

@@ -45,9 +45,11 @@ const ButtonArea = styled.div`
   width: 500px;
 `;
 
-const BackButton = styled.button`
+const BackButton = styled.div`
   padding: 10px;
   min-width: 20%;
+  display: flex;
+  justify-content: center;
   background-color: #708090;
   border-radius: 20px;
   border: none;
@@ -57,7 +59,17 @@ const BackButton = styled.button`
   }
 `;
 
-const SendButton = BackButton;
+const SendButton = styled.button`
+padding: 10px;
+min-width: 20%;
+background-color: #708090;
+border-radius: 20px;
+border: none;
+cursor: pointer;
+:hover {
+  background-color: #dae5e8;
+}
+`;
 
 
 const ApplicationFormPage = () => {
@@ -118,6 +130,7 @@ const ApplicationFormPage = () => {
           <select 
           name={"tripId"}
           onChange={onChange}
+          required
           >
             <option value={form.tripId} defaultValue>
               Escolha uma viagem
@@ -134,16 +147,19 @@ const ApplicationFormPage = () => {
         placeholder="Nome"
         value={form.name}
         onChange={onChange}
-        pattern={"^.{5,}"}
-        title={"O nome deve ter no mínimo 5 caracteres"}
+        pattern={"^.{2,}"}
+        title={"O nome deve ter no mínimo 2 caracteres"}
         required
         ></input>
         <input 
         name={"age"}
-        type="number" 
+        type="text" 
         placeholder="Idade"
         value={form.age}
         onChange={onChange}
+        pattern={"^^(?:1[01][0-9]|120|1[8-9]|[2-9][0-9])$"}
+        title={"Apenas números. Você precisa ter +18 anos para se candidatar"}
+        required
         ></input>
         <input 
         name={"applicationText"}
@@ -151,6 +167,9 @@ const ApplicationFormPage = () => {
         placeholder="Texto de Candidatura"
         value={form.applicationText}
         onChange={onChange}
+        pattern={"^.{2,}"}
+        title={"O texto de candidatura deve ter no mínimo 30 caracteres"}
+        required
         ></input>
         <input 
         name={"profession"}
@@ -158,10 +177,14 @@ const ApplicationFormPage = () => {
         placeholder="Profissão"
         value={form.profession}
         onChange={onChange}
+        pattern={"^.{2,}"}
+        title={"Deve ter no mínimo 10 caracteres"}
+        required
         ></input>
           <select 
           name={"country"}
           onChange={onChange}
+          required
           >
             <option value={form.country} defaultValue>
               Escolha um País
@@ -173,13 +196,11 @@ const ApplicationFormPage = () => {
             })}
           </select>
         <ButtonArea>
+          <BackButton onClick={goBack}>Voltar</BackButton>
           <SendButton>Enviar</SendButton>
         </ButtonArea>
         </form>
       </FormSelectContainer>
-        <ButtonArea>
-          <BackButton onClick={goBack}>Voltar</BackButton>
-        </ButtonArea>
     </ApplicationFromContainer>
   );
 };

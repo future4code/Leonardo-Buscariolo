@@ -42,8 +42,10 @@ const ButtonArea = styled.div`
   margin: 10px;
 `;
 
-const BackButton = styled.button`
+const BackButton = styled.div`
   padding: 10px;
+  display: flex;
+  justify-content: center;
   min-width: 20%;
   background-color: #708090;
   border-radius: 20px;
@@ -54,8 +56,17 @@ const BackButton = styled.button`
   }
 `;
 
-const LoginButton = BackButton;
-
+const LoginButton = styled.button`
+padding: 10px;
+min-width: 20%;
+background-color: #708090;
+border-radius: 20px;
+border: none;
+cursor: pointer;
+:hover {
+  background-color: #dae5e8;
+}
+`;
 const LoginPage = () => {
   const navigate = useNavigate();
 
@@ -121,13 +132,11 @@ const LoginPage = () => {
           required
           ></input>
           <ButtonArea>
+            <BackButton onClick={goBack}>Voltar</BackButton>
             <LoginButton>Entrar</LoginButton>
           </ButtonArea>
         </FormArea>
       </LoginArea>
-      <ButtonArea>
-        <BackButton onClick={goBack}>Voltar</BackButton>
-      </ButtonArea>
     </LoginContainer>
   );
 };

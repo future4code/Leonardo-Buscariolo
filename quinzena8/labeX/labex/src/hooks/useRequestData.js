@@ -3,7 +3,7 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 
-const useRequestData = (url, method, token, body, id) => {
+const useRequestData = (url, method, token, approval) => {
     const [data, setData] = useState(undefined)
 
     useEffect(() => {
@@ -28,7 +28,7 @@ const useRequestData = (url, method, token, body, id) => {
                 console.log(err.message)
             })
         }
-    },[url, method, token, body, id])
+    },[url, method, token, approval])
     return data
 }
 

@@ -41,12 +41,15 @@ const FormSelectContainer = styled.form`
 const ButtonArea = styled.div`
   display: flex;
   justify-content: space-around;
+  align-items: center;
   width: 300px;
   margin: 20px;
 `;
 
-const BackButton = styled.button`
+const BackButton = styled.span`
   padding: 10px;
+  display: flex;
+  justify-content: center;
   min-width: 30%;
   background-color: #708090;
   border-radius: 20px;
@@ -57,7 +60,19 @@ const BackButton = styled.button`
   }
 `;
 
-const CreateButton = BackButton;
+const CreateButton = styled.button`
+  padding: 12px;
+  display: flex;
+  justify-content: center;
+  min-width: 30%;
+  background-color: #708090;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  :hover {
+    background-color: #dae5e8;
+  }
+`;
 
 const CreateTripPage = () => {
   useProtectedPage();
@@ -110,6 +125,15 @@ const CreateTripPage = () => {
     navigate("/admin/trips/list");
   };
 
+  
+  const disablePastDate = () => {
+    const today = new Date();
+    const dd = String(today.getDate() + 1).padStart(2, "0");
+    const mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+    const yyyy = today.getFullYear();
+    return yyyy + "-" + mm + "-" + dd;
+};
+
 
   return (
     <CreateTripContainer>
@@ -123,7 +147,7 @@ const CreateTripPage = () => {
         name={"name"}
         value={form.name}
         onChange={onChange}
-        pattern={"^.{3,}"}
+        pattern={"^.{5,}"}
         title={"Mínimo 5 caracteres"}
         required
         ></input>
@@ -147,12 +171,11 @@ const CreateTripPage = () => {
         </div>
         <input 
         onChange={onChange}
-        type="text" 
+        type="date" 
         placeholder="DD/MM/AAAA"
         name={"date"}
         value={form.date}
-        pattern={"^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$"}
-        title={"A data deve estar no formato DD/MM/AAA"}
+        min={disablePastDate()}
         required
         ></input>
         <input 
@@ -161,6 +184,8 @@ const CreateTripPage = () => {
         placeholder="Descrição"
         name={"description"}
         value={form.description}
+        pattern={"^.{30,}"}
+        title={"Mínimo 30 caracteres"}
         required
         ></input>
         <input 
@@ -169,15 +194,15 @@ const CreateTripPage = () => {
         placeholder="Duração em dias"
         name={"durationInDays"}
         value={form.durationInDays}
+        pattern={"^([5-9]\d|[1-9]\d{2,})$"}
+        title={"Mínimo 50 dias"}
         required
         ></input>
         <ButtonArea>
+          <BackButton onClick={goBack}>Voltar</BackButton>
           <CreateButton>Criar</CreateButton>
         </ButtonArea>
       </FormSelectContainer>
-      <ButtonArea>
-        <BackButton onClick={goBack}>Voltar</BackButton>
-      </ButtonArea>
     </CreateTripContainer>
   );
 };
